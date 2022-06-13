@@ -3,6 +3,7 @@ package com.lambton.lab2_namrata_c0853345_android.sqlite;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -10,8 +11,6 @@ public class DbAdapter extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "product_database";
-
-
     private static final String TABLE_NAME = "product";
     private static final String COLUMN_ID = "product_id";
     private static final String COLUMN_NAME = "product_name";
@@ -67,6 +66,11 @@ public class DbAdapter extends SQLiteOpenHelper {
         return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null);
     }
 
+    public Cursor getFirstProduct()
+    {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME  + " LIMIT 1", null);
+    }
     /**
      * Update product in database
      * @param id
@@ -102,5 +106,4 @@ public class DbAdapter extends SQLiteOpenHelper {
                 COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)}) > 0;
     }
-
 }
