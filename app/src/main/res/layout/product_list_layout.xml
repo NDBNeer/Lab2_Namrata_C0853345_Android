@@ -58,7 +58,10 @@
         android:layout_marginEnd="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         android:clickable="true"
-        app:srcCompat="@android:drawable/ic_menu_add" />
-
-
+        android:src="@drawable/ic_baseline_add_circle_24"
+        app:backgroundTint="@color/purple_700"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
+         />
 </RelativeLayout>
