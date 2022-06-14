@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:textColorHint="@color/grey"
             android:hint="@string/product_price"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             />
         <Button
             android:id="@+id/btn_add"

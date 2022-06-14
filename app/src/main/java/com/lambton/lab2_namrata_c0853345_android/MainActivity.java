@@ -3,6 +3,7 @@ package com.lambton.lab2_namrata_c0853345_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         view_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(MainActivity.this,ProductListActivity.class));
             }
         });
     }
