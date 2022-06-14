@@ -26,7 +26,7 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_product);
+        setContentView(R.layout.edit_product);
         findId();
         toolbar.setTitle("Edit Product");
         setSupportActionBar(toolbar);
@@ -44,14 +44,14 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
         etProductName = findViewById(R.id.product_name);
         etProductDescription = findViewById(R.id.product_description);
         etProductPrice = findViewById(R.id.product_price);
-        btnAddToDb = findViewById(R.id.btn_add);
+        btnAddToDb = findViewById(R.id.btn_edit);
         btnAddToDb.setText("Edit Product");
         btnAddToDb.setOnClickListener(this);
         toolbar = findViewById(R.id.toolbar);
     }
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.btn_add){
+        if(v.getId() == R.id.btn_edit){
             dbAdapter.updateProduct(Integer.parseInt(prod_id),etProductName.getText().toString(),
                     etProductDescription.getText().toString(),
                     Double.parseDouble(etProductPrice.getText().toString()));
