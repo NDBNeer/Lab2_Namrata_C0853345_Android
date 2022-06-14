@@ -21,6 +21,7 @@
         <activity android:name="com.lambton.lab2_isharae_c0852812_android.controller.AddProductActivity" />
         <activity android:name=".ProductListActivity" />
         <activity android:name=".AddProductActivity" />
+        <activity android:name=".EditProduct" />
     </application>
 
 </manifest>
