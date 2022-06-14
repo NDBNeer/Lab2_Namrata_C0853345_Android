@@ -39,8 +39,6 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
         findId();
         toolbar.setTitle("Product List");
         setSupportActionBar(toolbar);
-        layoutManager = new LinearLayoutManager(mc, LinearLayoutManager.VERTICAL, false);
-        product_list.setLayoutManager(layoutManager);
         mc=ProductListActivity.this;
         prodlist=new ArrayList<>();
         dbAdapter=new DbAdapter(mc);
@@ -59,9 +57,11 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
             } while(row.moveToNext());
         }
         row.close();
-        /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mc);
-        product_list.setLayoutManager(mLayoutManager);*/
-         adapter = new ProductDetailAdapter(this, R.layout.product_list_detailview, prodlist);
+
+
+        layoutManager = new LinearLayoutManager(mc, LinearLayoutManager.VERTICAL, false);
+        product_list.setLayoutManager(layoutManager);
+         adapter = new ProductDetailAdapter(mc, R.layout.product_list_detailview, prodlist);
 
         //adapter = new ProductDetailAdapter(mc,prodlist);
         product_list.setAdapter(adapter);
@@ -71,7 +71,7 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
 
     private void findId() {
         search_product=findViewById(R.id.search_product);
-
+        toolbar = findViewById(R.id.toolbar);
         product_list=findViewById(R.id.product_list);
         add_prod=findViewById(R.id.add_prod);
         add_prod.setOnClickListener(this);

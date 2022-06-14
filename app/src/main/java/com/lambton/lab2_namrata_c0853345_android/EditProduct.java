@@ -45,6 +45,7 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
         btnAddToDb = findViewById(R.id.btn_add);
         btnAddToDb.setText("Edit Product");
         btnAddToDb.setOnClickListener(this);
+        toolbar = findViewById(R.id.toolbar);
     }
     @Override
     public void onClick(View v) {

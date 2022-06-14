@@ -29,6 +29,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     }
     private void findId(){
+        toolbar = findViewById(R.id.toolbar);
         etProductName = findViewById(R.id.product_name);
         etProductDescription = findViewById(R.id.product_description);
         etProductPrice = findViewById(R.id.product_price);

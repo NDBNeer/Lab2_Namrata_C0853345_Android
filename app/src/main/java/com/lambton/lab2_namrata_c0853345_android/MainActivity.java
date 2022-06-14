@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findID() {
+        toolbar = findViewById(R.id.toolbar);
         prod_name=findViewById(R.id.prod_name);
         prod_desc=findViewById(R.id.prod_desc);
         prod_price=findViewById(R.id.prod_price);
