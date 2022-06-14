@@ -57,7 +57,7 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
                 i.putExtra("prod_id",recyclerData.getProduct_id());
                 i.putExtra("prod_name",recyclerData.getProduct_name());
                 i.putExtra("prod_desc",recyclerData.getProduct_description());
-                i.putExtra("prod_price",recyclerData.getProduct_price());
+                i.putExtra("prod_price",String.valueOf(recyclerData.getProduct_price()));
                 mcontext.startActivity(i);
             }
         });

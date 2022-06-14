@@ -1,6 +1,7 @@
 package com.lambton.lab2_namrata_c0853345_android;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -34,6 +35,7 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
         prod_name=i.getStringExtra("prod_name");
         prod_desc = i.getStringExtra("prod_desc");
         prod_price= i.getStringExtra("prod_price");
+        Log.d("prod_price",prod_price);
         etProductName.setText(prod_name);
         etProductDescription.setText(prod_desc);
         etProductPrice.setText(prod_price);
@@ -53,6 +55,7 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
             dbAdapter.updateProduct(Integer.parseInt(prod_id),etProductName.getText().toString(),
                     etProductDescription.getText().toString(),
                     Double.parseDouble(etProductPrice.getText().toString()));
+            startActivity(new Intent(EditProduct.this, ProductListActivity.class));
         }
     }
 }
