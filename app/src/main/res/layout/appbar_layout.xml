@@ -10,7 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimaryDark"
+        android:background="@color/design_default_color_primary_dark"
         android:textAlignment="center"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:subtitleTextColor="@color/white"
