@@ -2,6 +2,7 @@ package com.lambton.lab2_namrata_c0853345_android.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,8 +54,9 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent i= new Intent(mcontext, EditProduct.class);
-                i.putExtra("prod_id",recyclerData.getProduct_id());
+                i.putExtra("prod_id",String.valueOf(recyclerData.getProduct_id()));
                 i.putExtra("prod_name",recyclerData.getProduct_name());
                 i.putExtra("prod_desc",recyclerData.getProduct_description());
                 i.putExtra("prod_price",String.valueOf(recyclerData.getProduct_price()));

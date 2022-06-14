@@ -35,7 +35,7 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
         prod_name=i.getStringExtra("prod_name");
         prod_desc = i.getStringExtra("prod_desc");
         prod_price= i.getStringExtra("prod_price");
-        Log.d("prod_price",prod_price);
+        //Log.d("prod_id",prod_id);
         etProductName.setText(prod_name);
         etProductDescription.setText(prod_desc);
         etProductPrice.setText(prod_price);
