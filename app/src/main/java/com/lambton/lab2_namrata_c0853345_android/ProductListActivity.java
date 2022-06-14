@@ -34,8 +34,6 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
     DbAdapter dbAdapter;
     Toolbar toolbar;
     Context mc;
-    String searchText;
-    Button btn_search_desc,btn_search_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
