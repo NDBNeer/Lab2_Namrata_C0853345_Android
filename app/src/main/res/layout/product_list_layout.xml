@@ -35,8 +35,30 @@
                android:layout_height="wrap_content"
                android:id="@+id/search_product"
                android:hint="@string/search_product_here"/>
-        </LinearLayout>
+            <LinearLayout
+      android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/btn_search_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="By Description"
+                    android:background="@color/design_default_color_primary"
+                    android:textColor="@color/white"/>
 
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/btn_search_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="By Name"
+                    android:background="@color/design_default_color_primary"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

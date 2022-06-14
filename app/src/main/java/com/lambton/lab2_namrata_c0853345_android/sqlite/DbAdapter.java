@@ -93,7 +93,26 @@ public class DbAdapter extends SQLiteOpenHelper {
                 COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)}) > 0;
     }
+    /**
+     * Query database - select all the product name
+     * @return cursor
+     * */
+    public Cursor findProductByName(String productName) {
+        // we need a readable instance of database
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE PRODUCT_NAME LIKE'%" + productName + "%'", null);
+    }
 
+
+    /**
+     * Query database - select all the product description
+     * @return cursor
+     * */
+    public Cursor findProductByDescription(String productDescription) {
+        // we need a readable instance of database
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE PRODUCT_DESCRIPTION LIKE '%" + productDescription + "%'", null);
+    }
     /**
      * Delete product from database table
      * @param id
@@ -106,4 +125,5 @@ public class DbAdapter extends SQLiteOpenHelper {
                 COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)}) > 0;
     }
+
 }

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,8 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
     DbAdapter dbAdapter;
     Toolbar toolbar;
     Context mc;
+    String searchText;
+    Button btn_search_desc,btn_search_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,11 +76,50 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
         toolbar = findViewById(R.id.toolbar);
         product_list=findViewById(R.id.product_list);
         add_prod=findViewById(R.id.add_prod);
+        btn_search_desc=findViewById(R.id.btn_search_desc);
+        btn_search_name=findViewById(R.id.btn_search_name);
         add_prod.setOnClickListener(this);
+        btn_search_desc.setOnClickListener(this);
+        btn_search_name.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(ProductListActivity.this,AddProductActivity.class));
+        switch (view.getId())
+        {
+            case R.id.add_prod:
+                startActivity(new Intent(ProductListActivity.this,AddProductActivity.class));
+               break;
+            case R.id.btn_search_desc:
+                 searchText = search_product.getText().toString();
+                Cursor cursor = null;
+                cursor = dbAdapter.findProductByDescription(searchText);
+                if (cursor != null && cursor.moveToFirst()){
+                    do {
+                        // Passing values
+                        String column1 = cursor.getString(0);
+                        String column2 = cursor.getString(1);
+                        String column3 = cursor.getString(2);
+                        String column4 = cursor.getString(3);
+                    } while(cursor.moveToNext());
+                }
+                cursor.close();
+                break;
+            case R.id.btn_search_name:
+                 searchText = search_product.getText().toString();
+                cursor = dbAdapter.findProductByName(searchText);
+                if (cursor != null && cursor.moveToFirst()){
+                    do {
+                        // Passing values
+                        String column1 = cursor.getString(0);
+                        String column2 = cursor.getString(1);
+                        String column3 = cursor.getString(2);
+                        String column4 = cursor.getString(3);
+                    } while(cursor.moveToNext());
+                }
+                cursor.close();
+                break;
+        }
+
     }
 }
