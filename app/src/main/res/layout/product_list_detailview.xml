@@ -63,14 +63,27 @@
                 android:textStyle="bold"
                 android:textColor="@color/green"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-            <Button
-                android:layout_gravity="center"
-                android:id="@+id/edit"
-                android:layout_margin="@dimen/_3sdp"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:background="@drawable/edit"
-                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_gravity="center"
+                    android:id="@+id/edit"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/edit"
+                    />
+                <Button
+                    android:layout_gravity="center"
+                    android:id="@+id/delete"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/ic_baseline_delete_outline_24"
+                    />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

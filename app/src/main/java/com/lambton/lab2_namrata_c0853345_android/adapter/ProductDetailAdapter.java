@@ -3,6 +3,7 @@ package com.lambton.lab2_namrata_c0853345_android.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lambton.lab2_namrata_c0853345_android.AddProductActivity;
 import com.lambton.lab2_namrata_c0853345_android.R;
 import com.lambton.lab2_namrata_c0853345_android.model.Products;
+import com.lambton.lab2_namrata_c0853345_android.sqlite.DbAdapter;
 
 import java.util.ArrayList;
 
@@ -22,8 +24,10 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
 
     private Context mContext;
     ArrayList<Products> products;
+    DbAdapter dbAdapter;
 
-    public ProductDetailAdapter(Context mContext, ArrayList<Products> products) {
+
+    public ProductDetailAdapter(Context mContext,int resource, ArrayList<Products> products) {
         this.mContext = mContext;
         this.products = products;
     }
@@ -38,7 +42,8 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
     @Override
     public void onBindViewHolder(@NonNull ProductDetailHolder holder, @SuppressLint("RecyclerView") int position) {
 
-
+        Log.d("PRODLIST222:", products.get(position).getProduct_name());
+        dbAdapter=new DbAdapter(mContext);
        holder.prod_name.setText(products.get(position).getProduct_name());
        holder.prod_desc.setText(products.get(position).getProduct_description());
        holder.prod_price.setText(String.valueOf(products.get(position).getProduct_price()));
@@ -53,6 +58,13 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
                 mContext.startActivity(i);
             }
         });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbAdapter.deleteProduct(products.get(position).getProduct_id());
+                notifyDataSetChanged();
+            }
+        });
 
     }
 
@@ -63,13 +75,14 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
 
     public static class ProductDetailHolder extends RecyclerView.ViewHolder {
         TextView prod_name,prod_desc,prod_price;
-        Button edit;
+        Button edit,delete;
         public ProductDetailHolder(View itemView) {
             super(itemView);
             prod_name = itemView.findViewById(R.id.prod_name);
             prod_desc = itemView.findViewById(R.id.prod_desc);
             prod_price = itemView.findViewById(R.id.prod_price);
             edit = itemView.findViewById(R.id.edit);
+            delete = itemView.findViewById(R.id.delete);
         }
     }
 }

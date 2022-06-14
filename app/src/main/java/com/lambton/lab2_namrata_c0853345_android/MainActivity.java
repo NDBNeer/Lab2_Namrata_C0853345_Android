@@ -1,6 +1,7 @@
 package com.lambton.lab2_namrata_c0853345_android;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,11 +20,14 @@ public class MainActivity extends AppCompatActivity {
     Button view_more;
     DbAdapter dbAdapter;
     Context context;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findID();
+        toolbar.setTitle("Product App");
+        setSupportActionBar(toolbar);
         context=MainActivity.this;
         dbAdapter=new DbAdapter(context);
         insertdatadb();

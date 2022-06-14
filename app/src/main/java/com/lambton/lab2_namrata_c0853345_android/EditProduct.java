@@ -5,10 +5,13 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.lambton.lab2_namrata_c0853345_android.R;
 import com.lambton.lab2_namrata_c0853345_android.sqlite.DbAdapter;
 
@@ -18,11 +21,14 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
     EditText etProductName, etProductDescription, etProductPrice;
     DbAdapter dbAdapter = new DbAdapter(this);
     String prod_id,prod_name,prod_desc,prod_price;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_product);
         findId();
+        toolbar.setTitle("Edit Product");
+        setSupportActionBar(toolbar);
         Intent i=getIntent();
         prod_id = i.getStringExtra("prod_id");
         prod_name=i.getStringExtra("prod_name");
