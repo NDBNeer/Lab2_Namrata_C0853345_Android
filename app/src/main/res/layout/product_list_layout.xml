@@ -36,6 +36,7 @@
                android:id="@+id/search_product"
                android:hint="@string/search_product_here"/>
         </LinearLayout>
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

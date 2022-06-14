@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lambton.lab2_namrata_c0853345_android.adapter.ProductDetailAdapter;
+import com.lambton.lab2_namrata_c0853345_android.adapter.ProductRecyclerViewAdapter;
 import com.lambton.lab2_namrata_c0853345_android.model.Products;
 import com.lambton.lab2_namrata_c0853345_android.sqlite.DbAdapter;
 
@@ -28,7 +29,7 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
     RecyclerView.LayoutManager layoutManager;
     FloatingActionButton add_prod;
     ArrayList<Products> prodlist;
-    ProductDetailAdapter adapter;
+    ProductRecyclerViewAdapter adapter;
     DbAdapter dbAdapter;
     Toolbar toolbar;
     Context mc;
@@ -61,9 +62,7 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
 
         layoutManager = new LinearLayoutManager(mc, LinearLayoutManager.VERTICAL, false);
         product_list.setLayoutManager(layoutManager);
-         adapter = new ProductDetailAdapter(mc, R.layout.product_list_detailview, prodlist);
-
-        //adapter = new ProductDetailAdapter(mc,prodlist);
+        adapter = new ProductRecyclerViewAdapter(prodlist,mc);
         product_list.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
