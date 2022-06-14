@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/product_name"
         android:inputType="text"
+        android:textColor="@color/black"
         android:textColorHint="@color/grey"
         />
 
@@ -39,6 +40,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/product_description"
         android:inputType="textMultiLine"
+        android:textColor="@color/black"
         android:textColorHint="@color/grey"
         />
         <EditText
@@ -47,6 +49,7 @@
             android:layout_height="wrap_content"
             android:textColorHint="@color/grey"
             android:hint="@string/product_price"
+            android:textColor="@color/black"
             android:inputType="numberDecimal"
             />
         <Button
