@@ -2,4 +2,8 @@
     <string name="app_name">Lab2_Namrata_C0853345_Android</string>
     <string name="view_more">View More</string>
     <string name="search_product_here">Search product here by name and description</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_description">Product Description</string>
+    <string name="product_price">Product Price</string>
+    <string name="add_product">Add Product</string>
 </resources>
