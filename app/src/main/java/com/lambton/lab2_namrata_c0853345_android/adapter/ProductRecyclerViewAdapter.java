@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lambton.lab2_namrata_c0853345_android.AddProductActivity;
 import com.lambton.lab2_namrata_c0853345_android.EditProduct;
+import com.lambton.lab2_namrata_c0853345_android.ProductListActivity;
 import com.lambton.lab2_namrata_c0853345_android.R;
 import com.lambton.lab2_namrata_c0853345_android.model.Products;
 import com.lambton.lab2_namrata_c0853345_android.sqlite.DbAdapter;
@@ -64,7 +65,8 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
             @Override
             public void onClick(View view) {
                 dbAdapter.deleteProduct(recyclerData.getProduct_id());
-                notifyDataSetChanged();
+                //notifyDataSetChanged();
+                mcontext.startActivity(new Intent(mcontext, ProductListActivity.class));
             }
         });
     }
