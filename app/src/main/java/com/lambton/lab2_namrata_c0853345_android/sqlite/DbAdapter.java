@@ -63,7 +63,7 @@ public class DbAdapter extends SQLiteOpenHelper {
     public Cursor getAllProducts() {
         // we need a readable instance of database
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY product_id DESC", null);
     }
 
     public Cursor getFirstProduct()
