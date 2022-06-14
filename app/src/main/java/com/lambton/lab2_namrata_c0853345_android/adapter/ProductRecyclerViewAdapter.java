@@ -2,6 +2,7 @@ package com.lambton.lab2_namrata_c0853345_android.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,8 +68,26 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
             @Override
             public void onClick(View view) {
                 dbAdapter.deleteProduct(recyclerData.getProduct_id());
+                courseDataArrayList = new ArrayList<>();
+                Cursor c = dbAdapter.getAllProducts();
+                if (c != null && c.moveToFirst()){
+                    do {
+                        // Passing values
+                        String column1 = c.getString(0);
+                        String column2 = c.getString(1);
+                        String column3 = c.getString(2);
+                        String column4 = c.getString(3);
+                        // Do something Here with values
+//                Log.d("DB_DEBUG_SEARCH", "col1: " + column1 + ", col2:" +
+//                        column2 + ", col3:" + column3 + ", col4:" + column4);
+                        Products data = new Products(Integer.parseInt(column1), column2,column3,Double.parseDouble(column4));
+                        courseDataArrayList.add(data);
+                    } while(c.moveToNext());
+                }
+                filterList(courseDataArrayList);
+
                 //notifyDataSetChanged();
-                mcontext.startActivity(new Intent(mcontext, ProductListActivity.class));
+                //mcontext.startActivity(new Intent(mcontext, ProductListActivity.class));
             }
         });
     }

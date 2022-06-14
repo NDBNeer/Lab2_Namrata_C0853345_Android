@@ -59,8 +59,16 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
+    <View
+        android:id="@+id/vieww"
         android:layout_below="@+id/prod_one_lay"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:alpha="0.1"/>
+    <LinearLayout
+        android:layout_below="@+id/vieww"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -75,6 +83,7 @@
             android:background="@color/blue"
             android:text="@string/view_more"
             android:textColor="#fff" />
+
     </LinearLayout>
 
 </RelativeLayout>
