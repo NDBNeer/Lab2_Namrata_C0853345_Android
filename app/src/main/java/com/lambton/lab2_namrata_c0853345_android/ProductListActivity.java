@@ -17,13 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.lambton.lab2_namrata_c0853345_android.adapter.ProductDetailAdapter;
 import com.lambton.lab2_namrata_c0853345_android.adapter.ProductRecyclerViewAdapter;
 import com.lambton.lab2_namrata_c0853345_android.model.Products;
 import com.lambton.lab2_namrata_c0853345_android.sqlite.DbAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ProductListActivity extends AppCompatActivity implements View.OnClickListener {
 
