@@ -94,4 +94,8 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
             delete = itemView.findViewById(R.id.delete);
         }
     }
+    public void filterList(ArrayList<Products> filteredList) {
+        courseDataArrayList = filteredList;
+        notifyDataSetChanged();
+    }
 }

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -69,6 +71,33 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
         product_list.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+        search_product.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+    }
+    private void filter(String text) {
+        ArrayList<Products> filteredList = new ArrayList<>();
+
+        for (Products item : prodlist) {
+            if (item.getProduct_name().toLowerCase().contains(text.toLowerCase()) || item.getProduct_description().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        adapter.filterList(filteredList);
     }
 
     private void findId() {
@@ -76,50 +105,12 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
         toolbar = findViewById(R.id.toolbar);
         product_list=findViewById(R.id.product_list);
         add_prod=findViewById(R.id.add_prod);
-        btn_search_desc=findViewById(R.id.btn_search_desc);
-        btn_search_name=findViewById(R.id.btn_search_name);
         add_prod.setOnClickListener(this);
-        btn_search_desc.setOnClickListener(this);
-        btn_search_name.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
-            case R.id.add_prod:
-                startActivity(new Intent(ProductListActivity.this,AddProductActivity.class));
-               break;
-            case R.id.btn_search_desc:
-                 searchText = search_product.getText().toString();
-                Cursor cursor = null;
-                cursor = dbAdapter.findProductByDescription(searchText);
-                if (cursor != null && cursor.moveToFirst()){
-                    do {
-                        // Passing values
-                        String column1 = cursor.getString(0);
-                        String column2 = cursor.getString(1);
-                        String column3 = cursor.getString(2);
-                        String column4 = cursor.getString(3);
-                    } while(cursor.moveToNext());
-                }
-                cursor.close();
-                break;
-            case R.id.btn_search_name:
-                 searchText = search_product.getText().toString();
-                cursor = dbAdapter.findProductByName(searchText);
-                if (cursor != null && cursor.moveToFirst()){
-                    do {
-                        // Passing values
-                        String column1 = cursor.getString(0);
-                        String column2 = cursor.getString(1);
-                        String column3 = cursor.getString(2);
-                        String column4 = cursor.getString(3);
-                    } while(cursor.moveToNext());
-                }
-                cursor.close();
-                break;
-        }
-
+        startActivity(new Intent(ProductListActivity.this,AddProductActivity.class));
     }
 }
