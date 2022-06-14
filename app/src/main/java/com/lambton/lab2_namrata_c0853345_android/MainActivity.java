@@ -27,10 +27,15 @@ public class MainActivity extends AppCompatActivity {
         dbAdapter=new DbAdapter(context);
         insertdatadb();
         Cursor row = dbAdapter.getFirstProduct();
-
-        /*prod_name.setText(row.getString(1));
-        prod_desc.setText(row.getString(2));
-        prod_price.setText(row.getString(3));*/
+        if (row.moveToFirst()){
+            do {
+                // Passing values
+                prod_name.setText(row.getString(1));
+                prod_desc.setText(row.getString(2));
+                prod_price.setText(row.getString(3));
+            } while(row.moveToNext());
+        }
+        row.close();
         view_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
